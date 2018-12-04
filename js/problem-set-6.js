@@ -83,7 +83,7 @@ function drawColoredRectangle() {
 let color = prompt("Enter a valid color. Black, blue, green, orange, purple, red, and yellow are valid.");
 let rectangle = document.getElementById("canvas3");
 if (rectangle.getContext){
-  var drawing = rectangle.getContext("2d");
+  let drawing = rectangle.getContext("2d");
   drawing.fillStyle = color;
   drawing.fillRect(10, 10, 100, 50);
 }
@@ -120,8 +120,17 @@ if (rectangle.getContext){
 
 function drawTriangle() {
 
+  let side1 = ("Enter the length of side 1.")
+  let side2 = ("Enter the length of side 2")
+  let side3 = ("Enter the length of side 3")
+  let triangle = document.getElementById("canvas4");
+  if (triangle.getContext){
+    let drawing = triangle.getContext("2d");
 
-
+    drawing.beginPath();
+    
+    
+  }
 }
 
 /*
