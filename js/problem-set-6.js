@@ -12,6 +12,9 @@
 
 function sayHello() {
 
+ let hello = document.getElementById("canvas1").getContext("2d");
+ hello.font = "48px sans-serif"
+ hello.strokeText("Hello, World!", 10, 50);
 }
 
 /*
@@ -39,6 +42,15 @@ function sayHello() {
 
 function drawRectangle() {
 
+let height = prompt("Enter a rectangle height.");
+let width = prompt("Enter a rectangle width.");
+let xCoord = prompt("Enter an x coordinate.");
+let yCoord = prompt("Enter a y coordinate.");
+let rectangle = document.getElementById("canvas2");
+if (rectangle.getContext){
+  let drawing = rectangle.getContext("2d");
+  drawing.strokeRect(xCoord, yCoord, width, height);
+}
 }
 
 /*
@@ -68,6 +80,13 @@ function drawRectangle() {
 
 function drawColoredRectangle() {
 
+let color = prompt("Enter a valid color. Black, blue, green, orange, purple, red, and yellow are valid.");
+let rectangle = document.getElementById("canvas3");
+if (rectangle.getContext){
+  var drawing = rectangle.getContext("2d");
+  drawing.fillStyle = color;
+  drawing.fillRect(10, 10, 100, 50);
+}
 }
 
 /*
@@ -100,6 +119,8 @@ function drawColoredRectangle() {
  */
 
 function drawTriangle() {
+
+
 
 }
 
