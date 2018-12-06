@@ -129,7 +129,6 @@ function drawTriangle() {
 
     drawing.beginPath();
     
-    
   }
 }
 
