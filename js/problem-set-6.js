@@ -120,19 +120,26 @@ if (rectangle.getContext){
 
 function drawTriangle() {
 
-  let side1 = prompt("Enter the length of side 1.")
-  let side2 = prompt("Enter the length of side 2")
-  let side3 = prompt("Enter the length of side 3")
+  let side1Num = prompt("Enter the length of side 1.");
+  let side2Num = prompt("Enter the length of side 2");
+  let side3Num = prompt("Enter the length of side 3");
+  let total = side1Num+side2Num+side3Num;
+  let smallLeg = Math.min(side1Num, side2Num, side3Num);
+  let bigLeg = Math.max(side1Num, side2Num, side3Num);
+  let hypotenuse = total-bigLeg-smallLeg
+  let startX = 10;
+  let startY = 10;
+  
+    if((smallLeg*smallLeg)+(bigLeg*bigLeg) === (hypotenuse*hypotenuse)){
+
   let triangle = document.getElementById("canvas4");
   if (triangle.getContext){
     let drawing = triangle.getContext("2d");
 
     drawing.beginPath();
-    drawing.lineTo(10, 10+side2)
-    drawing.lineTo(10+side1, 10)
-    drawing.lineTo(10+side1, 10+side2)
 
 
+  }
   }
 }
 
