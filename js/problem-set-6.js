@@ -120,15 +120,19 @@ if (rectangle.getContext){
 
 function drawTriangle() {
 
-  let side1 = ("Enter the length of side 1.")
-  let side2 = ("Enter the length of side 2")
-  let side3 = ("Enter the length of side 3")
+  let side1 = prompt("Enter the length of side 1.")
+  let side2 = prompt("Enter the length of side 2")
+  let side3 = prompt("Enter the length of side 3")
   let triangle = document.getElementById("canvas4");
   if (triangle.getContext){
     let drawing = triangle.getContext("2d");
 
     drawing.beginPath();
-    
+    drawing.lineTo(10, 10+side2)
+    drawing.lineTo(10+side1, 10)
+    drawing.lineTo(10+side1, 10+side2)
+
+
   }
 }
 
