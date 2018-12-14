@@ -120,29 +120,39 @@ if (rectangle.getContext){
 
 function drawTriangle() {
 
-  let side1Num = prompt("Enter the length of side 1.");
-  let side2Num = prompt("Enter the length of side 2");
-  let side3Num = prompt("Enter the length of side 3");
-  let total = side1Num+side2Num+side3Num;
-  let smallLeg = Math.min(side1Num, side2Num, side3Num);
-  let bigLeg = Math.max(side1Num, side2Num, side3Num);
-  let hypotenuse = total-bigLeg-smallLeg
-  let startX = 10;
-  let startY = 10;
-  
-    if((smallLeg*smallLeg)+(bigLeg*bigLeg) === (hypotenuse*hypotenuse)){
-
-  let triangle = document.getElementById("canvas4");
-  if (triangle.getContext){
-    let drawing = triangle.getContext("2d");
-
-    drawing.beginPath();
-
-
-  }
-  }
+ let triangle = document.getElementById("canvas4");
+ let drawing = triangle.getContext("2d");
+ drawing.clearRect(0, 0, canvas4.width, canvas4.height);
+ let startX = 10;
+ let startY = 10;
+ let a = Number(prompt("Enter length 1:"));
+ let b = Number(prompt("Enter length 2:"));
+ let c = Number(prompt("Enter length 3:"));
+ let total = Number(a + b + c);
+ if(isNaN(a) || isNaN(b) || isNaN(c)){
+     alert("This is not a valid triangle.");
+ }
+ else{
+     let hypotenuse = Math.max(a, b, c);
+     let shortLeg = Math.min(a, b, c)
+     let longLeg = Number(total - (shortLeg+hypotenuse));
+     if ((longLeg**2) + (shortLeg**2) != (hypotenuse**2)){
+         alert("This triangle is not valid");
+     }
+     else if (longLeg>1024 || shortLeg>512){
+         alert("This triangle is too big.");
+     }
+     else{
+        drawing.beginPath();
+        drawing.moveTo(startX, startY);
+        drawing.lineTo(startX, startY+longLeg);
+        drawing.lineTo(startX+shortLeg, startY+longLeg);
+        drawing.lineTo(startX, startY);
+        drawing.stroke();
+        drawing.closePath();
+     }
+ }
 }
-
 /*
  * Smile. 7 points.
  *
