@@ -173,7 +173,31 @@ function drawTriangle() {
  */
 
 function drawSmileyFace() {
-
+    let smile = document.getElementById("canvas5");
+    let drawing = smile.getContext("2d");
+    drawing.clearRect(0, 0, canvas5.width, canvas5.height);
+    let radius = Number(prompt("Enter an integer for face radius."));
+    if(isNaN(radius)){
+        alert("You didn't enter a real number.");
+    }
+    else if(radius<1){
+        alert("Your smiley face is too small.")
+    }
+    else if(radius>250.5){
+        alert("Your smiley face is too big")
+    }
+    else{
+        drawing.beginPath();
+        drawing.arc(radius+10, radius+10, radius, 0, Math.PI*2, true);
+        drawing.moveTo((radius+10)*.6,(radius+10)-(radius/2));
+        drawing.arc((radius+10)-(radius/2),(radius+10)-(radius/2),radius*.1, 0,Math.PI*2,true);
+        drawing.moveTo((radius+10)*1.6,(radius+10)-(radius/2));
+        drawing.arc((radius+10)+(radius/2),(radius+10)-(radius/2),radius*.1,0,Math.PI*2,true);
+        drawing.moveTo((radius+10)*1.7,radius+10);
+        drawing.arc(radius+10,radius+10,radius*.7,0,Math.PI,false);
+        drawing.stroke();
+        drawing.closePath();
+    }
 }
 
 /*
@@ -195,7 +219,36 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
-
+    let star = document.getElementById("canvas6");
+    let drawing = star.getContext("2d");
+    drawing.clearRect(0, 0, canvas6.width, canvas6.height);
+    let iR = Number(prompt("Enter an inner radius for your star."));
+    let oR = Number(prompt("Enter an outer radius for your star"));
+    if(isNaN(iR) || isNaN(oR)){
+        alert("One of your inputs is not a number.")
+    }
+    else if(iR<1 || oR<1){
+        alert("One of your inputs is too small.")
+    }
+    else if(iR>=oR){
+        alert("Your outer diameter is smaller than your inner diameter.")
+    }
+    else{
+        drawing.beginPath();
+        for (let i=0; i<=10; i++){
+            let j = (i*Math.PI)/(5-Math.PI/2);
+            let k;
+            if(i%2 == 0){
+                k = oR;
+            }
+            else{
+                k = iR;
+            }
+            drawing.lineTo(125+k*Math.cos(j),125+k*Math.sin(j))
+        }
+        drawing.closePath();
+        drawing.stroke();
+    }
 }
 
 /*
