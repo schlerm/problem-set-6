@@ -268,6 +268,25 @@ function drawStar() {
 
 function drawStopSign() {
 
+    let sign = document.getElementById("canvas7");
+    let drawing = sign.getContext("2d");
+    drawing.clearRect(0, 0, canvas7.width, canvas7.height);
+    let length = 120
+    let j = 1.375
+
+    drawing.beginPath();
+    drawing.moveTo((length * Math.cos(1.375 * Math.PI)) + 107.5, (length * Math.sin(1.375 * Math.PI)) + 107.5);
+    for (let i = 0 ; i < 9; i++) {
+        drawing.lineTo((length * Math.cos(j * Math.PI)) + 107.5, (length * Math.sin(j * Math.PI)) + 107.5);
+        j += .25;  
+    }
+    drawing.lineWidth = 4;
+    drawing.stroke();
+    drawing.fillStyle = "red";
+    drawing.fill();
+    drawing.font = "70px sans-serif","bold";
+    drawing.fillStyle = "white";
+    drawing.fillText("STOP", 19, 132.5);
 }
 
 /*
@@ -289,7 +308,43 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
-
+    let pyramid = document.getElementById("canvas8");
+    let drawing = pyramid.getContext("2d");
+    drawing.clearRect(0, 0, canvas8.width, canvas8.height);
+    let length = Number(prompt("How long do you want your pyramid?"));
+    if(isNaN(length)){
+        alert("Your number is not a number. Enter a new one.");
+    }
+    else if((length*5+10)>1023 || (length*5+10)>511){
+        alert("Your pyramid is too big. Enter a smaller number.")
+    }
+    else{
+    let v = 1;
+    let w = .5;
+    let x = 10;
+    let y = 502;
+    let z = 5;
+    function block() {
+        drawing.beginPath();
+        drawing.moveTo(x, y);
+        drawing.lineTo(x, y - length);
+        drawing.lineTo(x + length, y - length);
+        drawing.lineTo(x + length, y);
+        drawing.lineTo(x, y);
+        drawing.stroke();
+        };
+    for (let i=0;i < 5;i++) {
+      for (let i=0;i<z;i++) {
+        block();
+        x += length;
+      }
+      x = 10 + (w*length);
+      y = 502 - (v*length);
+      z--;
+      v++;
+      w += .5;
+    }
+    }
 }
 
 /*
@@ -322,5 +377,63 @@ function drawPyramid() {
  */
 
 function drawHouse() {
+    let house = document.getElementById("canvas9");
+    let drawing = house.getContext("2d");
+    drawing.clearRect(0,0,canvas9.width, canvas9.height);
+    let houseColor = prompt("Enter a house color.");
+    let doorColor = prompt("Enter a door color.");
+    if ((houseColor == "blue" || houseColor == "brown"|| houseColor == "green" || houseColor == "orange" || houseColor == "purple" || houseColor == "red" || houseColor == "yellow") && (doorColor == "blue" || doorColor == "brown"|| doorColor == "green" || doorColor == "orange" || doorColor == "purple" || doorColor == "red" || doorColor == "yellow")){
+    drawing.fillStyle="black";
+    drawing.fillRect(150,300,724,450);
+    drawing.fillStyle=houseColor;
+    drawing.fillRect(151,301,722,448);
+    drawing.fill();
 
+    drawing.beginPath();
+    drawing.moveTo(150,300);
+    drawing.lineTo(510,10);
+    drawing.lineTo(860,300);
+    drawing.lineTo(150,300);
+    drawing.fillStyle="black";
+    drawing.fill();
+    drawing.closePath();
+    drawing.beginPath();
+    drawing.moveTo(150,300);
+    drawing.lineTo(510,12);
+    drawing.lineTo(870,300);
+    drawing.lineTo(150,300);
+    drawing.fillStyle="gray";
+    drawing.fill();
+    drawing.closePath();
+
+    drawing.fillStyle="black";
+    drawing.fillRect(260,620,80,80);
+    drawing.fillRect(260,400,80,80);
+    drawing.fillRect(684,620,80,80);
+    drawing.fillRect(684,400,80,80);
+    drawing.fillStyle="lightblue";
+    drawing.fillRect(261,620,80,80);
+    drawing.fillRect(261,400,80,80);
+    drawing.fillRect(685,620,80,80);
+    drawing.fillRect(685,400,80,80);
+
+    drawing.fillStyle="black"
+    drawing.fillRect(462,590,100,160);
+    drawing.fillStyle=doorColor;
+    drawing.fillRect(462,590,100,160);
+
+    drawing.beginPath();
+    drawing.arc(545,670,8,0,Math.PI*2,true);
+    drawing.fillStyle="black";
+    drawing.fill();
+    drawing.closePath();
+    drawing.beginPath();
+    drawing.arc(545,670,7,0,Math.PI*2,true);
+    drawing.fillStyle="yellow";
+    drawing.fill();
+    drawing.closePath();
+    } 
+    else{
+        alert("One of your colors is not valid.");
+    }
 }
